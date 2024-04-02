@@ -1,2 +1,2 @@
-# Artificial Intelligence
- "Repository dedicated to the assignments of the Artificial Intelligence discipline of the Computer Engineering course at the Instituto Federal de Educação Ciência e Tecnologia do Triângulo Mineiro
+# Inteligência Artificial
+"Repositório dedicado aos trabalhos da disciplina de Inteligência Artificial do curso de Engenharia de Computação no Instituto Federal de Educação Ciência e Tecnologia do Triângulo Mineiro
