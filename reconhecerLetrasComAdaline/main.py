@@ -9,7 +9,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 class IALetterReconizer:
     def __init__(self):
         self.threshold = 0.0
-        os.chdir(r'C:\faculdade\IA\Trabalhos IA\Artificial-Intelligence\reconhecerLetrasComAdaline')
+        os.chdir(r'C:\git\Inteligencia-Artificial\reconhecerLetrasComAdaline')
         self.x = np.loadtxt('entradas.txt')
         self.target = np.loadtxt('resultados.txt')
         (self.samples, self.inputs) = np.shape(self.x)
