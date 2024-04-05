@@ -70,7 +70,7 @@ class IALetterReconizer:
                             y[j] = -1.0
 
                     for j in range(self.numResults):
-                        # calculation of error, using the formula of slide 10
+                        # calculation of error
                         error = error + 0.5 * ((self.target[j][i] - y[j]) ** 2)
 
                     # here we need the previous V to use in the formula of next weight
@@ -78,14 +78,14 @@ class IALetterReconizer:
 
                     for j in range(self.inputs):
                         for k in range(self.numResults):
-                            # Calculation of new weights using the formula of slide 13
+                            # Calculation of new weights
                             self.v[j][k] = previousV[j][k] + self.alpha * (self.target[k][i] - y[k]) * Xaux[j]
 
                     # here we need the previous V0 to use in the formula of next bias
                     previousV0 = self.v0
 
                     for j in range(self.numResults):
-                        # Calculation of new bias using the formula of slide 13
+                        # Calculation of new bias 
                         self.v0[j] = previousV0[j] + self.alpha * (self.target[j][i] - y[j])
 
                 ## Insert the cycle and error to the respectiver arrays that will be showed in plot ##
@@ -134,7 +134,7 @@ class IALetterReconizer:
                             y[j] = -1.0
 
                     for j in range(self.numResults):
-                        # calculation of error, using the formula of slide 10
+                        # calculation of error
                         error = error + 0.5 * ((self.target[j][i] - y[j]) ** 2)
 
                         # here we need the previous V to use in the formula of next weight
@@ -149,7 +149,7 @@ class IALetterReconizer:
                     previousV0 = self.v0
 
                     for j in range(self.numResults):
-                        # Calculation of new bias using the formula of slide 13
+                        # Calculation of new bias
                         self.v0[j] = previousV0[j] + self.alpha * (self.target[j][i] - y[j])
 
                     ## Insert the cycle and error to the respectiver arrays that will be showed in plot ##
