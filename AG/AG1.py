@@ -32,26 +32,23 @@ def gerarProbabilidades(vetor_imagem):
 
 # Realiza a seleção por torneio
 def selecao_torneio(vetor_prob, vetor_binario, tamanho_torneio):
-    """Realiza a seleção por torneio."""
+    
     indices_torneio = np.random.choice(len(vetor_prob), tamanho_torneio, replace=False)
     melhores_torneio = sorted([(vetor_binario[i], vetor_prob[i]) for i in indices_torneio], key=lambda x: x[1], reverse=True)
     return melhores_torneio[0][0]
 
 # Separa os n melhores elementos com base nas probabilidades
 def separarMelhores(vetor_prob, vetor_binario, n):
-    """Separa os n melhores elementos."""
     melhores_indices = sorted(range(len(vetor_prob)), key=lambda i: vetor_prob[i], reverse=True)[:n]
     return [vetor_binario[i] for i in melhores_indices]
 
 # Sorteia casais para o cruzamento
 def sortearCasais(qtd_melhores):
-    """Sorteia casais para cruzamento."""
     indices = np.random.permutation(qtd_melhores)
     return [(indices[i], indices[i+1]) for i in range(0, qtd_melhores, 2)]
 
 # Realiza o cruzamento entre os pais, gerando filhos
 def recombinar(ponto_corte, casais_sorteados, vetor_melhores):
-    """Realiza o cruzamento entre os pais."""
     filhos = []
     for pai1_idx, pai2_idx in casais_sorteados:
         pai1, pai2 = vetor_melhores[pai1_idx], vetor_melhores[pai2_idx]
@@ -63,7 +60,6 @@ def recombinar(ponto_corte, casais_sorteados, vetor_melhores):
 
 # Realiza o cruzamento de dois pontos entre os pais, gerando filhos
 def recombinar2(pontos_corte, casais_sorteados, vetor_melhores):
-    """Realiza o cruzamento de dois pontos entre os pais."""
     filhos = []
     corte1, corte2 = sorted(pontos_corte)
     for pai1_idx, pai2_idx in casais_sorteados:
@@ -76,7 +72,6 @@ def recombinar2(pontos_corte, casais_sorteados, vetor_melhores):
 
 # Realiza a mutação dos filhos
 def gerarMutacao(filhos, prob_mutacao, tamanho_cromossomo):
-    """Realiza a mutação dos filhos."""
     num_mutacao = int(len(filhos) * prob_mutacao / 100)
     for _ in range(num_mutacao):
         indice = rd.randint(0, len(filhos) - 1)
@@ -88,13 +83,11 @@ def gerarMutacao(filhos, prob_mutacao, tamanho_cromossomo):
 
 # Separa os n piores elementos com base nas probabilidades
 def separarPiores(vetor_prob, vetor_binario, n):
-    """Separa os n piores elementos."""
     piores_indices = sorted(range(len(vetor_prob)), key=lambda i: vetor_prob[i])[:n]
     return [vetor_binario[i] for i in piores_indices]
 
 # Substitui os piores elementos pelos filhos gerados
 def substituirPioresPorFilhos(populacao, piores_elementos, filhos_melhores):
-    """Substitui os piores elementos pelos filhos."""
     indices_piores = [populacao.index(pior) for pior in piores_elementos]
     for i, indice in enumerate(indices_piores):
         populacao[indice] = filhos_melhores[i]
@@ -102,7 +95,6 @@ def substituirPioresPorFilhos(populacao, piores_elementos, filhos_melhores):
 
 # Converte números binários para decimais
 def novosValoresDecimais(vetor_binarios):
-    """Converte números binários para decimais."""
     def binario_para_decimal(binario):
         inteiro, fracao = binario.split('.')
         return int(inteiro, 2) + sum(int(b) * 2**-(i+1) for i, b in enumerate(fracao))
@@ -110,7 +102,6 @@ def novosValoresDecimais(vetor_binarios):
 
 # Seleciona os n_elites melhores indivíduos com base em sua aptidão
 def elitism(vetor_prob, vetor_binario, n_elites):
-    """Seleciona os n_elites melhores indivíduos com base em sua aptidão."""
     pop_com_fitness = list(zip(vetor_binario, vetor_prob))
     pop_com_fitness.sort(key=lambda x: x[1], reverse=True)
     return [ind for ind, fit in pop_com_fitness[:n_elites]]
