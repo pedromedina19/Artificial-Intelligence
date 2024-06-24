@@ -59,7 +59,7 @@ classificador.fit(base_treinamento, steps_per_epoch = 4000 // 24,
                   validation_steps = 1000 // 24)
 
 # Carregamento e preparação da imagem para teste do modelo treinado
-imagem_teste = image.load_img('dataset/test_set/cachorro/dog.3501.jpg',
+imagem_teste = image.load_img('dataset/test_set/gato/cat.3502.jpg',
                               target_size = (64,64))
 imagem_teste = image.img_to_array(imagem_teste)
 imagem_teste /= 255
